@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Component({
@@ -8,21 +8,32 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  token: string = "";
   constructor(private http: HttpClient) { }
+
+  getValidation(token: string): void {
+    this.http.get<any>('http://localhost:8081/user/validateToken', { headers: new HttpHeaders({'auth': token})}).subscribe(res => {
+      console.log(res.message);
+    });
+  }
 
   ngOnInit(): void {
 
-    
+    var token = ""
+
 
     this.http.post<any>('http://localhost:8081/login', { userName: 'GavinKendall', password: 'password1' }).subscribe(data => {
             console.log("data sent!");
             
     })
     this.http.post<any>('http://localhost:8081/user/generateToken', { userName: 'ColeKendall', password: 'password' }).subscribe(data => {
-              this.token = data.generatedToken;
-              console.log("Token Returned: " + data.generatedToken);
+              token = data.generatedToken;
+              console.log("Token Returned: " + token);
+              this.getValidation(token);
     })
+
+
+    
+
   }
 
   title = 'paper-n-pencil-frontend';

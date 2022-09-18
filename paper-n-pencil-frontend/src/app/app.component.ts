@@ -20,11 +20,6 @@ export class AppComponent implements OnInit {
 
     var token = ""
 
-
-    this.http.post<any>('http://localhost:8081/login', { userName: 'GavinKendall', password: 'password1' }).subscribe(data => {
-            console.log("data sent!");
-            
-    })
     this.http.post<any>('http://localhost:8081/user/generateToken', { userName: 'ColeKendall', password: 'password' }).subscribe(data => {
               token = data.generatedToken;
               console.log("Token Returned: " + token);

@@ -11,6 +11,7 @@
             <input type="password" class="form-control" id="password" placeholder="Password" #password>
             </div>
             <button type="submit" (click)="attemptLogin(username.value, password.value)" class="btn btn-primary">Submit</button>
+        <div class={{classesOfAlert}} role="alert">{{this.errorMessage}}</div>
         </div>
     </div>
     <div class="col-sm-5"></div>

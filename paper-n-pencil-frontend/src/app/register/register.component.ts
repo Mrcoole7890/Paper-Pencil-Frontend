@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
 
   userRegisterExists() {
     this.errorMessage = "This user exists already.";
-    this.classesOfAlert = "alert alert-warning alert-dismissible fade show"; 
+    this.classesOfAlert = "alert alert-warning alert-dismissible fade show";
   }
 
   isErrorFound(responce: any) {

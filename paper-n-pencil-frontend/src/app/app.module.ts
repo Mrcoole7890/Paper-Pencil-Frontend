@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,8 @@ import { RegisterComponent } from './register/register.component';
         {path: 'app-login', component: LoginComponent},
         {path: 'app-register', component: RegisterComponent},
         {path: '', redirectTo: '/app-login', pathMatch: 'full'},
-        {path: 'app-register-redirect', redirectTo: '/app-register', pathMatch: 'full'}
+        {path: 'app-register-redirect', redirectTo: '/app-register', pathMatch: 'full'},
+        {path: 'user-dashboard', component: UserDashboardComponent}
   ]),
   ],
   providers: [],

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   errorMessage = "";
   classesOfAlert = "alert alert-warning alert-dismissible fade";
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private _router: Router) {
 
   }
 
@@ -22,7 +23,11 @@ export class LoginComponent implements OnInit {
 
   attemptLogin(username: string, password: string) {
     this.http.post<any>('http://localhost:8081/login', { userName: username, password: password }).subscribe(data => {
-      if (this.isErrorFound(data) == 0) this.userLoginSuccess();
+      if (this.isErrorFound(data) == 0) {
+        this.userLoginSuccess();
+        localStorage.setItem('token', data.token);
+        this._router.navigate(['/user-dashboard']);    
+      }
       else if (this.isErrorFound(data) == 1) this.userLoginIncorrect();
     });
   }

@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  token = sessionStorage.getItem('token');
+
+  ngOnInit(): void {    
   }
 
 }

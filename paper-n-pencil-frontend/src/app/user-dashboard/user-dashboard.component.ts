@@ -11,7 +11,15 @@ export class UserDashboardComponent implements OnInit {
 
   token = sessionStorage.getItem('token');
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
+  }
+
+  getBaseData() {
+
+  }
+
+  getClanData() {
+    
   }
 
 }

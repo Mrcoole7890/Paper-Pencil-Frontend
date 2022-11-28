@@ -23,29 +23,27 @@ export class LoginComponent implements OnInit {
 
   attemptLogin(username: string, password: string) {
     this.http.post<any>('http://localhost:8081/login', { userName: username, password: password }).subscribe(data => {
-      if (this.isErrorFound(data) == 0) {
-        this.userLoginSuccess();
-        sessionStorage.setItem('token', data.token);
-        this._router.navigate(['/user-dashboard']);    
-      }
-      else if (this.isErrorFound(data) == 1) this.userLoginIncorrect();
+      if (!this.isErrorFound(data)) this.userLoginSuccess(data);
+      else this.userLoginIncorrect();
     });
   }
 
-  userLoginSuccess() {
+  userLoginSuccess(data: any) {
     this.errorMessage = "Welcome!";
     this.classesOfAlert = "alert alert-success alert-dismissible fade show";
+    sessionStorage.setItem('token', data.token);
+    this._router.navigate(['/user-dashboard']);
   }
 
   userLoginIncorrect() {
     this.errorMessage = "This username and/or password are incorrect.";
-    this.classesOfAlert = "alert alert-danger alert-dismissible fade show"; 
+    this.classesOfAlert = "alert alert-danger alert-dismissible fade show";
   }
 
   isErrorFound(responce: any) {
     if(responce.status == "UNotF") return 1;
     else if (responce.status == "Good") return 0;
     else return 0;
-  } 
+  }
 
 }

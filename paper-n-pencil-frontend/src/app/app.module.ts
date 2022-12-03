@@ -8,13 +8,19 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { InfoHeaderComponent } from './info-header/info-header.component';
+import { BaseSummaryDivComponent } from './base-summary-div/base-summary-div.component';
+import { MembersSummaryDivComponent } from './members-summary-div/members-summary-div.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    InfoHeaderComponent,
+    BaseSummaryDivComponent,
+    MembersSummaryDivComponent
   ],
   imports: [
     BrowserModule,

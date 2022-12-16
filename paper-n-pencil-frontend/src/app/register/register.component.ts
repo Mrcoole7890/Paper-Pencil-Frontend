@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void { }
 
   attemptRegister(username: string, password: string) {
-    this.http.post<any>('http://localhost:8081/register', { userName: username, password: password }).subscribe(data => {
+    this.http.post<any>('http://localhost:8081/register', { username: username, password: password }).subscribe(data => {
       if (this.isErrorFound(data) == 0) this.userRegisterSuccess();
       else if (this.isErrorFound(data) == 1) this.userRegisterExists();
     });
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
   isErrorFound(responce: any) {
     if(responce.status == "USInUse") return 1;
     else return 0;
-  } 
+  }
 
 
 }

@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void { }
 
   attemptLogin(username: string, password: string) {
-    this.http.post<any>('http://localhost:8081/login', { userName: username, password: password }).subscribe(data => {
+    this.http.post<any>('http://localhost:8081/login', { username: username, password: password }).subscribe(data => {
       if (!this.isErrorFound(data)) this.userLoginSuccess(data);
       else this.userLoginIncorrect();
     });
